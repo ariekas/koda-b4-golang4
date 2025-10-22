@@ -13,20 +13,20 @@ func AuthRegister() data.DataRegister {
 	var users data.DataRegister
 
 	fmt.Print("What is your first name: ")
-	fmt.Scan(&inputFirstName)
+	fmt.Scanln(&inputFirstName)
 
 	fmt.Print("What is your last name: ")
-	fmt.Scan(&inputLastName)
+	fmt.Scanln(&inputLastName)
 
 	fmt.Print("What is your email: ")
-	fmt.Scan(&inputEmail)
+	fmt.Scanln(&inputEmail)
 
 	for {
 		fmt.Print("Enter a strong password: ")
-		fmt.Scan(&inputPassword)
+		fmt.Scanln(&inputPassword)
 
 		fmt.Print("Confirm your password: ")
-		fmt.Scan(&inputPasswordConfirm)
+		fmt.Scanln(&inputPasswordConfirm)
 
 		if inputPassword == inputPasswordConfirm {
 			fmt.Println("Register successful!")
@@ -34,10 +34,10 @@ func AuthRegister() data.DataRegister {
 			fmt.Println("\n \n Is it true?")
 			fmt.Println("Firt Name", inputFirstName)
 			fmt.Println("Last Name", inputLastName)
-			fmt.Println("Email Name", inputPassword)
+			fmt.Println("Email Name", inputEmail)
 			fmt.Print("Continue (y/n)")
 			var confirm string
-			fmt.Scan(&confirm)
+			fmt.Scanln(&confirm)
 			confirm = strings.ToLower(confirm)
 
 			switch confirm {
@@ -49,9 +49,9 @@ func AuthRegister() data.DataRegister {
 					Password:        inputPassword,
 					ConfirmPassword: inputPasswordConfirm,
 				}
-				
+				return users 
 			case "n":
-				AuthRegister()
+				return AuthRegister() 
 			default:
 				fmt.Print("gagal")
 			}

@@ -2,24 +2,34 @@ package menu
 
 import (
 	"authFLow/auth"
+	"authFLow/auth/home"
 	"authFLow/data"
 	"fmt"
 )
 
-func Menu(choce int) {
-	var registered data.DataRegister
-	switch choce {
+var registered data.DataRegister
+
+func Menu(choice int) bool {
+	switch choice {
 	case 1:
-		auth.AuthRegister()
+		registered = auth.AuthRegister()
 		fmt.Println("Register success, press enter to back..")
 		fmt.Scanln()
-		
+		return false
+
 	case 2:
-		auth.Login(registered)
+		if auth.Login(registered) {
+			home.HomePage()
+			return true 
+		}
+		return false 
+
 	case 3:
-		fmt.Println("Forget Password")
-	case 0:
-		fmt.Println("Exit Program")
+		fmt.Println("Forget Password feature coming soon...")
+		fmt.Println("Press enter to continue...")
+		fmt.Scanln()
+		return false
+
 	default:
 		panic("Wrong input")
 	}

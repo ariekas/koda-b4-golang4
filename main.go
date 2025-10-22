@@ -21,15 +21,17 @@ func main() {
 		0. Exit
 		`)
 
-		var choce int
+		var choice int
 		fmt.Print("Choose a menu: ")
-		fmt.Scan(&choce)
+		fmt.Scanln(&choice)
 
-		if choce == 0 {
+		if choice == 0 {
 			fmt.Println("Exit Program")
 			break
 		}
 
-		menu.Menu(choce)
+		if menu.Menu(choice) {
+			break
+		}
 	}
 }
