@@ -25,9 +25,7 @@ func Menu(choice int) bool {
 		return false 
 
 	case 3:
-		fmt.Println("Forget Password feature coming soon...")
-		fmt.Println("Press enter to continue...")
-		fmt.Scanln()
+		auth.ForgetPassword()
 		return false
 
 	default:
