@@ -49,9 +49,10 @@ func AuthRegister() data.DataRegister {
 					Password:        inputPassword,
 					ConfirmPassword: inputPasswordConfirm,
 				}
-				return users 
+				data.Users = append(data.Users, users)
+				return users
 			case "n":
-				return AuthRegister() 
+				return AuthRegister()
 			default:
 				fmt.Print("gagal")
 			}

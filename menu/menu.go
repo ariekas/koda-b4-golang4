@@ -18,9 +18,9 @@ func Menu(choice int) bool {
 		return false
 
 	case 2:
-		if auth.Login(registered) {
-			home.HomePage()
-			return true 
+		if user, ok := auth.Login(); ok {
+			home.HomePage(user)
+			return true
 		}
 		return false 
 

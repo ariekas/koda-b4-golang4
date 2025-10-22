@@ -7,3 +7,6 @@ type DataRegister struct {
 	Password        string
 	ConfirmPassword string
 }
+
+
+var Users []DataRegister

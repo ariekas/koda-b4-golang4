@@ -30,8 +30,6 @@ func main() {
 			break
 		}
 
-		if menu.Menu(choice) {
-			break
-		}
+		menu.Menu(choice)
 	}
 }
