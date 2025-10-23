@@ -30,6 +30,8 @@ func HomePage(accountLogin *data.DataRegister) {
 				for i, user := range users {
 					fmt.Printf("%d. %s\n", i+1, users[i].GetFullName())
 					fmt.Printf("   Email: %s\n\n", user.Email)
+					fmt.Printf("   Password: %s\n\n", user.Password)
+
 				}
 
 				fmt.Println("0. Back")

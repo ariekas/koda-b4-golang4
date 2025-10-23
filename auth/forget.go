@@ -1,6 +1,7 @@
 package auth
 
 import (
+	"authFLow/auth/utils"
 	"authFLow/data"
 	"fmt"
 )
@@ -26,8 +27,9 @@ func ForgetPassword() {
 				fmt.Scanln(&confirmPassword)
 
 				if newPassword == confirmPassword {
-					data.Users[i].Password = newPassword
-					data.Users[i].ConfirmPassword = confirmPassword
+					hashedPassword := utils.HashPassword(newPassword)
+					data.Users[i].Password = hashedPassword
+					data.Users[i].ConfirmPassword = hashedPassword
 					fmt.Println("Password changed successfully!")
 					break
 				} else {

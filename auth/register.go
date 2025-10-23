@@ -1,6 +1,7 @@
 package auth
 
 import (
+	"authFLow/auth/utils"
 	"authFLow/data"
 	"fmt"
 	"strings"
@@ -36,19 +37,20 @@ func AuthRegister() data.DataRegister {
 			fmt.Println("Last Name", inputLastName)
 			fmt.Println("Email Name", inputEmail)
 			fmt.Print("Continue (y/n)")
-			
+
 			var confirm string
 			fmt.Scanln(&confirm)
 			confirm = strings.ToLower(confirm)
 
 			switch confirm {
 			case "y":
+				hashedPassword := utils.HashPassword(inputPassword)
 				users = data.DataRegister{
 					FirstName:       inputFirstName,
 					LastName:        inputLastName,
 					Email:           inputEmail,
-					Password:        inputPassword,
-					ConfirmPassword: inputPasswordConfirm,
+					Password:        hashedPassword,
+					ConfirmPassword: hashedPassword,
 				}
 				data.Users = append(data.Users, users)
 				return users

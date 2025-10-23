@@ -1,6 +1,7 @@
 package auth
 
 import (
+	"authFLow/auth/utils"
 	"authFLow/data"
 	"fmt"
 )
@@ -17,9 +18,11 @@ func Login() (*data.DataRegister, bool) {
 		fmt.Print("Enter your password: ")
 		fmt.Scanln(&inputPassword)
 
+		hashedInputPassword := utils.HashPassword(inputPassword)
+
 		for i := range data.Users {
 			user := &data.Users[i]
-			if user.Email == inputEmail && user.Password == inputPassword {
+			if user.Email == inputEmail && user.Password == hashedInputPassword {
 				fmt.Println("Login success, press enter to back..")
 				fmt.Scanln()
 				return user, true
