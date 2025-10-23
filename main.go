@@ -3,12 +3,14 @@ package main
 import (
 	"authFLow/menu"
 	"fmt"
+	"os"
 )
 
 func main() {
 	defer func() {
 		if r := recover(); r != nil {
 			fmt.Println("Error:", r)
+			
 		}
 	}()
 
@@ -27,6 +29,7 @@ func main() {
 
 		if choice == 0 {
 			fmt.Println("Exit Program")
+			os.Exit(0)
 			break
 		}
 

@@ -3,11 +3,14 @@ package home
 import (
 	"authFLow/data"
 	"fmt"
+	"os"
 )
 
-func HomePage(accountLogin data.DataRegister) {
+func HomePage(accountLogin *data.DataRegister) {
+	var userService data.UserService = &data.UserServiceImpl{}
+
 	for {
-		fmt.Println("\n--- Welcome to system bek bek bek bek ---")
+		fmt.Println("\n--- Welcome to system ---")
 		fmt.Println("Hello,", accountLogin.Email)
 		fmt.Println(`
 1. List All User
@@ -23,10 +26,10 @@ func HomePage(accountLogin data.DataRegister) {
 		case "1":
 			for {
 				fmt.Println("\n--- List of All Users ---")
-				for i, user := range data.Users {
-					fmt.Printf("%d.\n", i+1)
-					fmt.Printf("   Email   : %s\n", user.Email)
-					fmt.Printf("   Password: %s\n\n", user.Password)
+				users := userService.GetAllUsers()
+				for i, user := range users {
+					fmt.Printf("%d. %s\n", i+1, users[i].GetFullName())
+					fmt.Printf("   Email: %s\n\n", user.Email)
 				}
 
 				fmt.Println("0. Back")
@@ -54,8 +57,7 @@ func HomePage(accountLogin data.DataRegister) {
 
 		case "0":
 			fmt.Println("Program exited.")
-			panic("Exit program")
-
+			os.Exit(0)
 		default:
 			fmt.Println("Invalid input.")
 		}

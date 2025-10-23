@@ -5,7 +5,7 @@ import (
 	"fmt"
 )
 
-func Login() (data.DataRegister, bool) {
+func Login() (*data.DataRegister, bool) {
 	for {
 		fmt.Println("--- Login ---")
 
@@ -17,7 +17,8 @@ func Login() (data.DataRegister, bool) {
 		fmt.Print("Enter your password: ")
 		fmt.Scanln(&inputPassword)
 
-		for _, user := range data.Users {
+		for i := range data.Users {
+			user := &data.Users[i]
 			if user.Email == inputEmail && user.Password == inputPassword {
 				fmt.Println("Login success, press enter to back..")
 				fmt.Scanln()
@@ -33,7 +34,7 @@ func Login() (data.DataRegister, bool) {
 
 		if choice == "0" {
 			fmt.Println("Returning to main menu...")
-			return data.DataRegister{}, false
+			return &data.DataRegister{}, false
 		}
 	}
 }

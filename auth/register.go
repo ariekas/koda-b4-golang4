@@ -36,6 +36,7 @@ func AuthRegister() data.DataRegister {
 			fmt.Println("Last Name", inputLastName)
 			fmt.Println("Email Name", inputEmail)
 			fmt.Print("Continue (y/n)")
+			
 			var confirm string
 			fmt.Scanln(&confirm)
 			confirm = strings.ToLower(confirm)

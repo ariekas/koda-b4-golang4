@@ -29,6 +29,6 @@ func Menu(choice int) bool {
 		return false
 
 	default:
-		panic("Wrong input")
+		panic(fmt.Sprintf("Wrong input: %d", choice))
 	}
 }
